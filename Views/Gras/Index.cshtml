@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<Find_a_Game.Models.Gra>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Gras", FormMethod.Get))
+{
+    <p>
+        Szukaj: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Szukaj" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Nazwa", "Index", new { sortOrder = ViewBag.NazwaSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Gatunek", "Index", new { sortOrder = ViewBag.GatunekSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Platforma", "Index", new { sortOrder = ViewBag.PlatformaSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Producent", "Index", new { sortOrder = ViewBag.ProducentSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Rok Wydania", "Index", new { sortOrder = ViewBag.RokWydaniaSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Ocena", "Index", new { sortOrder = ViewBag.OcenaSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nazwa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gatunek)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Platforma)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Producent)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RokWydania)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ocena)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.GraID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.GraID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.GraID })
+    </td>
+</tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+

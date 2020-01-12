@@ -1,0 +1,75 @@
+﻿@model Find_a_Game.Models.Gra
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gatunek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gatunek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Platforma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Platforma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RokWydania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RokWydania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ocena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ocena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GraID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
