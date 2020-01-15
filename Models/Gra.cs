@@ -36,7 +36,7 @@ namespace Find_a_Game.Models
         public string Opis { get; set; }
     }
 
-    class SprawdzRokAttribute : ValidationAttribute
+    public class SprawdzRokAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
